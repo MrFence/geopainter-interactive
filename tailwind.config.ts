@@ -39,6 +39,10 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -56,6 +60,13 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        map: {
+          default: "hsl(var(--map-default))",
+          border: "hsl(var(--map-border))",
+          hover: "hsl(var(--map-hover))",
+          yellow: "hsl(var(--map-yellow))",
+          green: "hsl(var(--map-green))",
         },
       },
       borderRadius: {

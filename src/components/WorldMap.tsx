@@ -27,7 +27,10 @@ type CountryState = "default" | "yellow" | "green";
 const WorldMap = ({ data }: WorldMapProps) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const gRef = useRef<SVGGElement>(null);
-  const [countryStates, setCountryStates] = useState<Record<string, CountryState>>({});
+  const [countryStates, setCountryStates] = useState<Record<string, CountryState>>(() => {
+    const saved = localStorage.getItem('worldMapStates');
+    return saved ? JSON.parse(saved) : {};
+  });
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<{ x: number; y: number; name: string } | null>(null);
   const zoomBehaviorRef = useRef<any>(null);
@@ -60,6 +63,10 @@ const WorldMap = ({ data }: WorldMapProps) => {
       svg.on(".zoom", null);
     };
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('worldMapStates', JSON.stringify(countryStates));
+  }, [countryStates]);
 
   const handleCountryClick = (countryId: string) => {
     setCountryStates((prev) => {
